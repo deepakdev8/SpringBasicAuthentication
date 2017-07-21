@@ -5,17 +5,17 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.rapidvalue.app.model.AccountRequest;
 import com.rapidvalue.app.repository.entity.Account;
 import com.rapidvalue.app.service.AccountService;
 
-@Controller
+@RestController
 @RequestMapping("/api")
 public class AccountsController {
 	
@@ -29,7 +29,7 @@ public class AccountsController {
 	}
 	
 	@RequestMapping(value="/accounts", method = RequestMethod.POST)
-	public ResponseEntity<Account> createAccou0nt(@RequestBody AccountRequest accountRequest){
+	public ResponseEntity<Account> createAccount(@RequestBody AccountRequest accountRequest){
 		Account createAccount = new Account();
 		createAccount.setAccountNumber(accountRequest.getAccountNumber());
 		createAccount.setOwner(accountRequest.getOwnerName());
@@ -51,5 +51,4 @@ public class AccountsController {
 	}
 	
 	
-
 }

@@ -31,9 +31,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable()
 		.authorizeRequests()
-		.antMatchers("/api/**").hasRole("ADMIN")
-		.and().httpBasic().authenticationEntryPoint(getBasicAuthEntryPoint())
-		.and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+		.anyRequest().authenticated()
+		.and().httpBasic().authenticationEntryPoint(getBasicAuthEntryPoint());
 		
 		/*http.csrf().disable()
 		.httpBasic().authenticationEntryPoint(getBasicAuthEntryPoint())
